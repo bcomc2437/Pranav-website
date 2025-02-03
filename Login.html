@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1>Login</h1>
+        <h3>Enter your login credentials</h3>
+
+        <form id="loginForm">
+            <label for="first">
+                Username:
+            </label>
+            <input type="text" id="first" name="first" 
+                placeholder="Enter your Username" required>
+
+            <label for="password">
+                Password:
+            </label>
+            <input type="password" id="password" name="password" 
+                placeholder="Enter your Password" required>
+
+            <div class="wrap">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        
+        <p><font color="white"><strong>Not registered?</font><button type="login" ><a href="Registration.html">Create Account</a>
+</button>
+        </p>
+    </div>
+
+    <script>
+        // Display stored data if available
+        alert("Saved Username: " + localStorage.getItem("Username"));
+        alert("Saved Email: " + localStorage.getItem("Email"));
+        alert("Saved Password: " + localStorage.getItem("Password"));
+
+        // Handle form submission
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById("first").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (username === "" || password === "") {
+                alert("Please enter both username and password.");
+                return;
+            }
+
+            // Store the data in localStorage
+            localStorage.setItem("Username", username);
+            localStorage.setItem("Password", password);
+
+            alert("Login Successfull !!!");
+            
+            // Redirect after successful input
+            window.location.href = "file:Home page.html";
+        });
+    </script>
+</body>
+
+</html>
